@@ -1,10 +1,8 @@
 import logo from '../assets/logo.jpg'
 import { useContext } from "react";
 import { changeData } from "../data-context";
-// export default function Header({selectedItem, handleModal}) {
 export default function Header() {
   const { data, handleModal } = useContext(changeData);
-  console.log(data);
 
   return (
     <header id="main-header">

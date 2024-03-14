@@ -1,36 +1,20 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import Card from "./component/Card";
 import Header from "./component/Header";
-import { useState } from "react";
 import CartModal from "./component/Modals/CartModal";
 import CheckoutModal from "./component/Modals/CheckoutModal";
 import SuccessModal from "./component/Modals/SuccessModal";
 import { changeData } from "./data-context";
 
 function App() {
-
-  const {data, modal, setData, handleModal, loading  } = useContext(changeData);
-  console.log(data);
-  
+  const { data, setData, loading } = useContext(changeData);
 
   return (
     <main>
-      <Header
-        selectedItem={data.selectedItem}
-        handleModal={handleModal}
-      />
-      <SuccessModal open={modal.success} setData={setData} handleModal={handleModal} />
-      <CheckoutModal
-        items={data.selectedItem}
-        open={modal.checkOut}
-        handleModal={handleModal}
-      />
-      <CartModal
-        items={data.selectedItem}
-        open={modal.cart}
-        handleModal={handleModal}
-        setData={setData}
-      />
+      <Header />
+      <SuccessModal />
+      <CheckoutModal />
+      <CartModal />
       <div id="meals">
         {!loading ? (
           data.data.map((item) => (

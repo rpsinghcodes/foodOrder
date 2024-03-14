@@ -1,12 +1,15 @@
-export default function SuccessModal({open, handleModal, setData}) {
+import { useContext } from "react";
+import { changeData } from "../../data-context";
+
+export default function SuccessModal() {
+  const { modal, handleModal, setData } = useContext(changeData);
 
   const handleClose = () => {
-    handleModal('success', false);
-    setData(prevData => ({...prevData, selectedItem:[]}))
-
-  }
+    handleModal("success", false);
+    setData((prevData) => ({ ...prevData, selectedItem: [] }));
+  };
   return (
-    <dialog className="modal" open={open}>
+    <dialog className="modal" open={modal.success}>
       <h2>Success!</h2>
       <p>Your order was submitted successfully.</p>
       <p>
@@ -14,7 +17,9 @@ export default function SuccessModal({open, handleModal, setData}) {
         minutes.
       </p>
       <div className="modal-actions">
-        <button className="button" onClick={handleClose}>Okay</button>
+        <button className="button" onClick={handleClose}>
+          Okay
+        </button>
       </div>
     </dialog>
   );

@@ -23,7 +23,6 @@ export default function HandleState({ children }) {
 
   useEffect(() => {
     try {
-      console.log("Hello");
       async function fetchData() {
         const response = await fetch("http://localhost:3000/meals", {
           method: "GET",
@@ -38,8 +37,6 @@ export default function HandleState({ children }) {
       alert(err);
     }
   }, []);
-
-  console.log(data);
   const value = {
     data: data,
     selectedItem: data.selectedItem,
